@@ -1,25 +1,43 @@
-const Card = () => {
+import PropTypes from "prop-types";
+import { useState } from "react";
+const Card = ({ item }) => {
+  const [image, setImage] = useState(item.images[0]);
+
+  const handleMouseEnter = () => {
+    setImage(item.images[1]);
+  };
+
+  const handleMouseLeave = () => {
+    setImage(item.images[0]);
+  };
+
   return (
     <div className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-md p-1">
       <figure className="relative mb-2 w-full h-4/5">
-        <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
-          Electronics
-        </span>
         <img
-          className="w-full h-full object-cover rounded-lg"
-          src="https://cdn.thewirecutter.com/wp-content/media/2023/07/bluetoothheadphones-2048px-0876.jpg"
-          alt="headphones"
+          className="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
+          src={image}
+          alt={item.description}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
-        <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
+        <div className="absolute top-0 right-0 flex justify-center items-center bg-white text-black w-6 h-6 rounded-full m-2 p-1">
           +
         </div>
+        <span className="absolute bottom-0 left-0 flex bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
+          {item.category.name}
+        </span>
       </figure>
       <p className="flex justify-between items-center">
-        <span className="text-sm font-light">Headphones</span>
-        <span className="text-lg font-medium">$300</span>
+        <span className="text-sm font-light text-wrap">{item.title}</span>
+        <span className="text-lg font-medium">${item.price}</span>
       </p>
     </div>
   );
+};
+
+Card.propTypes = {
+  item: PropTypes.object,
 };
 
 export default Card;
