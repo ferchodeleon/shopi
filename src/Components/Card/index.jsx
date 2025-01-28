@@ -16,7 +16,10 @@ const Card = ({ item }) => {
   };
 
   return (
-    <div className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-md p-1">
+    <div
+      className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-md p-1"
+      onClick={() => context.openProductDetail()}
+    >
       <figure className="relative mb-2 w-full h-4/5">
         <img
           className="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
