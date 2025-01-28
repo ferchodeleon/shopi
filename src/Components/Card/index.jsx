@@ -15,10 +15,15 @@ const Card = ({ item }) => {
     setImage(item.images[0]);
   };
 
+  const showProductDetail = (productDetail) => {
+    context.setProductToShow(productDetail);
+    context.openProductDetail();
+  };
+
   return (
     <div
       className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-md p-1"
-      onClick={() => context.openProductDetail()}
+      onClick={() => showProductDetail(item)}
     >
       <figure className="relative mb-2 w-full h-4/5">
         <img
