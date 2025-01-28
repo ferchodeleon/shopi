@@ -21,6 +21,25 @@ const ProductDetail = () => {
           <XMarkIcon className="size-6 text-black" />
         </div>
       </div>
+      <section className="flex flex-col p-6">
+        <figure className="my-5">
+          <img
+            className="w-full h-full object-cover rounded-lg"
+            src={context.productToShow.images[0]}
+            alt="Image of product"
+          />
+        </figure>
+        <p className="font-medium text-2xl my-3">
+          ${context.productToShow.price}
+        </p>
+        <h3 className="font-medium my-2">{context.productToShow.title}</h3>
+        <p className="font-light text-sm">
+          {context.productToShow.description}
+        </p>
+        <h4 className="my-4 font-medium text-xs text-zinc-400">
+          {context.productToShow.category.name}
+        </h4>
+      </section>
     </aside>
   );
 };
