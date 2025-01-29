@@ -15,7 +15,15 @@ const Home = () => {
   return (
     <Layout>
       <div className="grid grid-cols-4 gap-4">
-        {items && items.map((item) => <Card key={item.id} item={item} />)}
+        {items &&
+          items.map((item) => {
+            {
+              if (item.images[0].includes("[")) {
+                return;
+              }
+            }
+            return <Card key={item.id} item={item} />;
+          })}
       </div>
       <ProductDetail />
     </Layout>
