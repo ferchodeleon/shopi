@@ -12,13 +12,16 @@ export const ShoppingCartProvider = ({ children }) => {
   const openProductDetail = () => setIsProductDetailOpen(true);
   const closeProductDetail = () => setIsProductDetailOpen(false);
 
+  // Checkout side menu Open/Close
+  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
+
   // Product detail -- Show product
   const [productToShow, setProductToShow] = useState({});
 
   // Shopping cart products detail
   const [cartProducts, setCartProducts] = useState([]);
-
-  console.log("cartProducts", cartProducts);
 
   return (
     <ShoppingCartContext.Provider
@@ -32,6 +35,9 @@ export const ShoppingCartProvider = ({ children }) => {
         setProductToShow,
         cartProducts,
         setCartProducts,
+        isCheckoutSideMenuOpen,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
       }}
     >
       {children}
