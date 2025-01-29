@@ -1,8 +1,10 @@
-import PropTypes from "prop-types";
 import { useState } from "react";
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../Context";
+import PropTypes from "prop-types";
 import { PlusIcon } from "@heroicons/react/24/solid";
+
+import { ShoppingCartContext } from "../../Context";
+
 const Card = ({ item }) => {
   const [image, setImage] = useState(item.images[0]);
   const context = useContext(ShoppingCartContext);
@@ -17,6 +19,9 @@ const Card = ({ item }) => {
 
   const showProductDetail = (productDetail) => {
     context.setProductToShow(productDetail);
+    if (productDetail) {
+      context.openProductDetail();
+    }
     context.openProductDetail();
   };
 
