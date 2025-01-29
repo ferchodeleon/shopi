@@ -25,7 +25,10 @@ const ProductDetail = () => {
         <figure className="my-5">
           <img
             className="w-full h-full object-cover rounded-lg"
-            src={context.productToShow.images[0]}
+            src={
+              context.productToShow.images?.[0] ??
+              "https://static-00.iconduck.com/assets.00/no-image-icon-512x512-lfoanl0w.png"
+            }
             alt="Image of product"
           />
         </figure>
@@ -37,7 +40,7 @@ const ProductDetail = () => {
           {context.productToShow.description}
         </p>
         <h4 className="my-4 font-medium text-xs text-zinc-400">
-          {context.productToShow.category.name}
+          {context.productToShow.category?.name}
         </h4>
       </section>
     </aside>
