@@ -43,7 +43,7 @@ const CheckoutSideMenu = () => {
           />
         ))}
       </div>
-      <div className="absolute bottom-10 right-7 text-2xl font-medium">
+      <div className="bg-white absolute bottom-10 right-7 text-2xl font-medium">
         Total:{" "}
         <span className="text-xl text-zinc-600">
           ${totalPrice(context.cartProducts)}
