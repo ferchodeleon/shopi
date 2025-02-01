@@ -9,7 +9,7 @@ const MyOrders = () => {
   const context = useContext(ShoppingCartContext);
   return (
     <Layout>
-      <div className="flex justify-center items-center w-80 relative">
+      <div className="flex justify-center items-center w-80 relative mb-3">
         <h1>MyOrders</h1>
       </div>
       {context.order.map((order, index) => (
