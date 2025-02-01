@@ -13,7 +13,7 @@ const MyOrders = () => {
         <h1>MyOrders</h1>
       </div>
       {context.order.map((order, index) => (
-        <Link to={`/my-order/${order.id}`} key={index}>
+        <Link to={`/my-order/${index}`} key={index}>
           <OrdersCard
             key={order.date}
             date={order.date}
