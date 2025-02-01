@@ -4,6 +4,16 @@ import PropTypes from "prop-types";
 const OrderCard = (props) => {
   const { id, title, imageUrl, price, removeProduct } = props;
 
+  let renderXMarkIcon;
+  if (removeProduct) {
+    renderXMarkIcon = (
+      <TrashIcon
+        className="h-5 w-5 text-black cursor-pointer"
+        onClick={() => removeProduct(id)}
+      />
+    );
+  }
+
   return (
     <div className="flex justify-between items-center my-4">
       <div className="flex items-center gap-2">
@@ -18,10 +28,7 @@ const OrderCard = (props) => {
       </div>
       <div className="flex justify-between items-center gap-2">
         <p className="text-lg font-medium">${price}</p>
-        <TrashIcon
-          className="h-5 w-5 text-black cursor-pointer"
-          onClick={() => removeProduct(id)}
-        />
+        {renderXMarkIcon}
       </div>
     </div>
   );
@@ -32,7 +39,7 @@ OrderCard.propTypes = {
   title: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  removeProduct: PropTypes.func.isRequired,
+  removeProduct: PropTypes.func,
 };
 
 export default OrderCard;

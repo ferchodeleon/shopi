@@ -69,7 +69,6 @@ const NavBar = () => {
           <NavLink
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
             to="/my-orders"
-            onClick={() => context.openCheckoutSideMenu()}
           >
             My orders
           </NavLink>
