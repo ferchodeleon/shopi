@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 export const ShoppingCartContext = createContext();
@@ -26,6 +26,19 @@ export const ShoppingCartProvider = ({ children }) => {
   // Shopping cart order
   const [order, setOrder] = useState([]);
 
+  // Get products
+  const [items, setItems] = useState(null);
+
+  // Get products by title
+  const [searchByTitle, setSearchByTitle] = useState("");
+  console.log(searchByTitle);
+
+  useEffect(() => {
+    fetch("https://api.escuelajs.co/api/v1/products")
+      .then((res) => res.json())
+      .then((data) => setItems(data));
+  }, []);
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -43,6 +56,10 @@ export const ShoppingCartProvider = ({ children }) => {
         closeCheckoutSideMenu,
         order,
         setOrder,
+        items,
+        setItems,
+        searchByTitle,
+        setSearchByTitle,
       }}
     >
       {children}
