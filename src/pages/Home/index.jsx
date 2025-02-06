@@ -41,7 +41,7 @@ const Home = () => {
         placeholder="Search a product"
         onChange={(event) => context.setSearchByTitle(event.target.value)}
       />
-      <div className="grid gap-4 grid-cols-4 lg:grid-cols-4 md:grid-cols-2 ms:grid-cols-">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {renderView()}
       </div>
       <ProductDetail />
