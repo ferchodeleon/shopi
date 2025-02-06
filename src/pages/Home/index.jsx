@@ -7,6 +7,30 @@ import { ShoppingCartContext } from "../../Context";
 const Home = () => {
   const context = useContext(ShoppingCartContext);
 
+  const renderView = () => {
+    if (context.searchByTitle?.length > 0) {
+      if (context.filteredItems?.length === 0) {
+        return <p>Product not found</p>;
+      }
+      return context.filteredItems?.map((item) => {
+        {
+          if (item.images[0].includes("[")) {
+            return;
+          }
+        }
+        return <Card key={item.id} item={item} />;
+      });
+    } else {
+      return context.filteredItems?.map((item) => {
+        if (item.images[0].includes("[")) {
+          return;
+        }
+
+        return <Card key={item.id} item={item} />;
+      });
+    }
+  };
+
   return (
     <Layout>
       <div className="flex justify-center items-center w-80 relative mb-6">
@@ -18,15 +42,7 @@ const Home = () => {
         onChange={(event) => context.setSearchByTitle(event.target.value)}
       />
       <div className="grid gap-4 grid-cols-4 lg:grid-cols-4 md:grid-cols-2 ms:grid-cols-">
-        {context.items &&
-          context.items.map((item) => {
-            {
-              if (item.images[0].includes("[")) {
-                return;
-              }
-            }
-            return <Card key={item.id} item={item} />;
-          })}
+        {renderView()}
       </div>
       <ProductDetail />
     </Layout>
