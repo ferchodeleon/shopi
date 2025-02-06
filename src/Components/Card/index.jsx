@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useContext } from "react";
 import PropTypes from "prop-types";
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/solid";
@@ -6,16 +5,7 @@ import { PlusIcon, CheckIcon } from "@heroicons/react/24/solid";
 import { ShoppingCartContext } from "../../Context";
 
 const Card = ({ item }) => {
-  const [image, setImage] = useState(item.images[0]);
   const context = useContext(ShoppingCartContext);
-
-  const handleMouseEnter = () => {
-    setImage(item.thumbnail);
-  };
-
-  const handleMouseLeave = () => {
-    setImage(item.images[0]);
-  };
 
   const showProductDetail = (productDetail) => {
     context.setProductToShow(productDetail);
@@ -65,11 +55,9 @@ const Card = ({ item }) => {
     >
       <figure className="relative mb-2 w-full h-4/5">
         <img
-          className="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
-          src={image}
+          className="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-108"
+          src={item.images[0]}
           alt={item.description}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         />
         {renderIcon(item.id)}
         <span className="absolute bottom-0 left-0 flex bg-black/60 rounded-lg text-white text-xs m-2 px-3 py-0.5">
