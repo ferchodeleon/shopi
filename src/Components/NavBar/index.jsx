@@ -12,7 +12,9 @@ const NavBar = () => {
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
       <ul className="flex items-center gap-3">
         <li className="font-semibold text-lg">
-          <NavLink to="/">Shopi</NavLink>
+          <NavLink to="/" onClick={() => context.setSearchByCategory()}>
+            Shopi
+          </NavLink>
         </li>
         <li>
           <NavLink
@@ -26,26 +28,26 @@ const NavBar = () => {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            to="/clothes"
-            onClick={() => context.setSearchByCategory("clothes")}
+            to="/beauty"
+            onClick={() => context.setSearchByCategory("beauty")}
           >
-            Clothes
+            Beauty
           </NavLink>
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            to="/electronics"
-            onClick={() => context.setSearchByCategory("electronics")}
+            to="/fragrances"
+            onClick={() => context.setSearchByCategory("fragrances")}
           >
-            Electronics
+            Fragrances
           </NavLink>
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
             to="/furnitures"
-            onClick={() => context.setSearchByCategory("furnitures")}
+            onClick={() => context.setSearchByCategory("furniture")}
           >
             Furnitures
           </NavLink>
@@ -53,10 +55,10 @@ const NavBar = () => {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            to="/toys"
-            onClick={() => context.setSearchByCategory("toys")}
+            to="/groceries"
+            onClick={() => context.setSearchByCategory("groceries")}
           >
-            Toys
+            Groceries
           </NavLink>
         </li>
         <li>

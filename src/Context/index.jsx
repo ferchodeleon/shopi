@@ -37,9 +37,9 @@ export const ShoppingCartProvider = ({ children }) => {
   const [searchByCategory, setSearchByCategory] = useState(null);
 
   useEffect(() => {
-    fetch("https://api.escuelajs.co/api/v1/products")
+    fetch("https://dummyjson.com/products")
       .then((res) => res.json())
-      .then((data) => setItems(data));
+      .then((data) => setItems(data.products));
   }, []);
 
   const filteredItemsByTitle = (items, searchByTitle) =>
@@ -48,9 +48,7 @@ export const ShoppingCartProvider = ({ children }) => {
     );
 
   const filteredItemsByCategory = (items, searchByCategory) =>
-    items?.filter(
-      (item) => item.category.name.toLowerCase() === searchByCategory
-    );
+    items?.filter((item) => item.category.toLowerCase() === searchByCategory);
 
   const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
     if (searchType === "BY_TITLE") {

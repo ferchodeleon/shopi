@@ -10,7 +10,7 @@ const Card = ({ item }) => {
   const context = useContext(ShoppingCartContext);
 
   const handleMouseEnter = () => {
-    setImage(item.images[1]);
+    setImage(item.thumbnail);
   };
 
   const handleMouseLeave = () => {
@@ -72,8 +72,8 @@ const Card = ({ item }) => {
           onMouseLeave={handleMouseLeave}
         />
         {renderIcon(item.id)}
-        <span className="absolute bottom-0 left-0 flex bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
-          {item.category.name}
+        <span className="absolute bottom-0 left-0 flex bg-black/60 rounded-lg text-white text-xs m-2 px-3 py-0.5">
+          {item.category}
         </span>
       </figure>
       <p className="flex justify-between items-center">

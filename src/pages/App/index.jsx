@@ -43,11 +43,11 @@ const AppRoutes = () => {
       element: <SignIn />,
     },
     {
-      path: "/clothes",
+      path: "/beauty",
       element: <Home />,
     },
     {
-      path: "/electronics",
+      path: "/fragrances",
       element: <Home />,
     },
     {
@@ -55,7 +55,7 @@ const AppRoutes = () => {
       element: <Home />,
     },
     {
-      path: "/toys",
+      path: "/groceries",
       element: <Home />,
     },
     {
