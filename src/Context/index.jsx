@@ -3,7 +3,35 @@ import PropTypes from "prop-types";
 
 export const ShoppingCartContext = createContext();
 
+export const initializeLocalStorage = () => {
+  const accountInLocalStorage = localStorage.getItem("account");
+  const signOutInLocalStorage = localStorage.getItem("sing-out");
+
+  let parsedAccount;
+  let parsedSignOut;
+
+  if (!accountInLocalStorage) {
+    localStorage.setItem("account", JSON.stringify({}));
+    parsedAccount = {};
+  } else {
+    parsedAccount = JSON.parse(accountInLocalStorage);
+  }
+
+  if (!signOutInLocalStorage) {
+    localStorage.setItem("sing-out", JSON.stringify(false));
+    parsedSignOut = false;
+  } else {
+    parsedSignOut = JSON.parse(signOutInLocalStorage);
+  }
+};
+
 export const ShoppingCartProvider = ({ children }) => {
+  // My account
+  const [account, setAccount] = useState({});
+
+  // Sign Out
+  const [signOut, setSignOut] = useState(false);
+
   // Shopping cart increment quantity
   const [count, setCount] = useState(0);
 
@@ -116,6 +144,10 @@ export const ShoppingCartProvider = ({ children }) => {
         filteredItems,
         searchByCategory,
         setSearchByCategory,
+        account,
+        setAccount,
+        signOut,
+        setSignOut,
       }}
     >
       {children}
