@@ -18,6 +18,63 @@ const NavBar = () => {
     context.setSignOut(true);
   };
 
+  const renderView = () => {
+    if (isUserSignOut) {
+      return (
+        <>
+          <li className="text-black-60">fercho@shopi.com</li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              to="/my-orders"
+            >
+              My orders
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              to="/my-account"
+            >
+              My account
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              to="/sign-in"
+              onClick={() => handleSignOut()}
+            >
+              Sign Out
+            </NavLink>
+          </li>
+          <li className="flex items-center gap-1">
+            <ShoppingBagIcon className="size-6 text-black" />
+            <p className="w-1.5"> {context.count} </p>
+          </li>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              to="/sign-in"
+              onClick={() => handleSignOut()}
+            >
+              Sign In
+            </NavLink>
+          </li>
+          <li className="flex items-center gap-1">
+            <ShoppingBagIcon className="size-6 text-black" />
+            <p className="w-1.5"> {context.count} </p>
+          </li>
+        </>
+      );
+    }
+  };
+
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
       <ul className="flex items-center gap-3">
@@ -81,38 +138,7 @@ const NavBar = () => {
           </NavLink>
         </li>
       </ul>
-      <ul className="flex items-center gap-3">
-        <li className="text-black-60">fercho@shopi.com</li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            to="/my-orders"
-          >
-            My orders
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            to="/my-account"
-          >
-            My account
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            to="/sign-in"
-            onClick={() => handleSignOut()}
-          >
-            Sign Out
-          </NavLink>
-        </li>
-        <li className="flex items-center gap-1">
-          <ShoppingBagIcon className="size-6 text-black" />
-          <p className="w-1.5"> {context.count} </p>
-        </li>
-      </ul>
+      <ul className="flex items-center gap-3">{renderView()}</ul>
     </nav>
   );
 };

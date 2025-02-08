@@ -120,6 +120,8 @@ export const ShoppingCartProvider = ({ children }) => {
       setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory));
   }, [items, searchByTitle, searchByCategory]);
 
+  console.log("signOut ", signOut);
+
   return (
     <ShoppingCartContext.Provider
       value={{
